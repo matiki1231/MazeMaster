@@ -11,7 +11,7 @@ package com.stirante.MazeMaster
 	 */
 	public class Texture 
 	{
-		[Embed(source = "../bin/textures.png")]
+		[Embed(source="../../../resources/textures.png")]
 		public static var textury:Class;
 		
 		public static function getBlock(x:int, y:int):Bitmap {
@@ -21,14 +21,14 @@ package com.stirante.MazeMaster
 			return result;
 		}
 		
-		public static function getAnimation(x:int, y:int, frames:int):Animation
-		{
-			var textures1:Bitmap = new textury() as Bitmap;
-			var textures:Bitmap = new Bitmap(new BitmapData(16 * frames, 16, false));
-			textures.bitmapData.copyPixels(textures1.bitmapData, new Rectangle(x * 16, y * 16, 16 * frames, 16), new Point());
-			var animation:Animation = new Animation(textures, frames);
-			return animation;
-		}
+		//public static function getAnimation(x:int, y:int, frames:int):Animation
+		//{
+			//var textures1:Bitmap = new textury() as Bitmap;
+			//var textures:Bitmap = new Bitmap(new BitmapData(16 * frames, 16, false));
+			//textures.bitmapData.copyPixels(textures1.bitmapData, new Rectangle(x * 16, y * 16, 16 * frames, 16), new Point());
+			//var animation:Animation = new Animation(textures, frames);
+			//return animation;
+		//}
 		
 	}
 
