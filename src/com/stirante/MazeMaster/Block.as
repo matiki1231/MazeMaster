@@ -37,7 +37,9 @@ package com.stirante.MazeMaster
 			texture = Texture.getBlock(x, y);
 			addChild(texture);
 		}
-		
+		/**
+		 * 
+		 */
 		public function get walkable():Boolean
 		{
 			return _walkable;
