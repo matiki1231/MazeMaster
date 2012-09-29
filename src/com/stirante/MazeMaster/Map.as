@@ -12,6 +12,7 @@ package com.stirante.MazeMaster
 		private var entities:Array;
 		private var tempX:int;
 		private var tempY:int;
+		private var blocks:Array;
 		
 		public function Map(map:Array) 
 		{
@@ -29,15 +30,14 @@ package com.stirante.MazeMaster
 			{
 				map1 = new Sprite();
 			}
-			var temp:Block;
 			for (var i:int = 0; i < map.length; i++)
 			{
 				for (var j:int = 0; j < map[0].length; j++)
 				{
-					temp = BlockList.getBlockById(map[i][j]);
-					temp.y = 16 * i;
-					temp.x = 16 * j;
-					map1.addChild(temp);
+					blocks[i][j] = BlockList.getBlockById(map[i][j]);
+					blocks[i][j].y = 16 * i;
+					blocks[i][j].x = 16 * j;
+					map1.addChild(blocks[i][j]);
 				}
 			}
 			addChild(map1);
@@ -49,7 +49,7 @@ package com.stirante.MazeMaster
 			map1 = new Sprite();
 		}
 		
-		public function spawnEntity(entity:Entity, posX:int = -1, posY:int = -1, chunk:String = ""):void
+		public function spawnEntity(entity:Entity, posX:int = -1, posY:int = -1):void
 		{
 			if (posX == -1 && posY == -1) {
 				posX = Math.round(Math.random() * 14) + 1;
@@ -78,11 +78,11 @@ package com.stirante.MazeMaster
 			return false;
 		}
 		
-		private function getBlockAt(x:Number, y:Number):Block 
+		public function getBlockAt(corner:Object):Block 
 		{
-			tempX = Math.round(x / 16);
-			tempY = Math.round(y / 16);
-			return BlockList.getBlockToTest(map[tempY][tempX]);
+			tempX = Math.round(corner.x / 16);
+			tempY = Math.round(corner.y / 16);
+			return blocks[tempY][tempX];
 		}
 		
 	}
