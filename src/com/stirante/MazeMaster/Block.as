@@ -8,7 +8,7 @@ package com.stirante.MazeMaster
 	import flash.geom.Point;
 	
 	/**
-	 * ...
+	 * Abstrakcyjna klasa bloku
 	 * @author Piotr Brzozowski
 	 */
 	public class Block extends Sprite
@@ -19,7 +19,14 @@ package com.stirante.MazeMaster
 		private var _walkable:Boolean;
 		private var _name:String;
 		private var texture:DisplayObject;
-		
+		/**
+		 * Abstrakcyjna klasa bloku
+		 * @param	id ID bloku
+		 * @param	x Pozycja x w pliku tekstur
+		 * @param	y Pozycja y w pliku tekstur
+		 * @param	walkable True jeśli można iść po bloku, jeśli nie false
+		 * @param	name Nazwa bloku
+		 */
 		public function Block(id:int, x:int, y:int, walkable:Boolean, name:String)
 		{
 			this.name = name;
