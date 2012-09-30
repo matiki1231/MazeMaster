@@ -1,4 +1,4 @@
-package com.stirante.MazeMaster
+package com.stirante.MazeMaster.blocks
 {
 	
 	/**

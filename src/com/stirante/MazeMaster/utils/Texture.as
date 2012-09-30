@@ -1,4 +1,4 @@
-package com.stirante.MazeMaster
+package com.stirante.MazeMaster.utils
 {
 	import flash.display.*;
 	import flash.events.Event;
@@ -11,7 +11,7 @@ package com.stirante.MazeMaster
 	 */
 	public class Texture 
 	{
-		[Embed(source="../../../resources/textures.png")]
+		[Embed(source="../../../../resources/textures.png")]
 		public static var textury:Class;
 		
 		public static function getBlock(x:int, y:int):Bitmap {

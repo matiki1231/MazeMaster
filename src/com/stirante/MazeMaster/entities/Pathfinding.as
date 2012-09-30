@@ -1,4 +1,4 @@
-package com.stirante.MazeMaster
+package com.stirante.MazeMaster.entities
 {
 	import flash.geom.Point;
 	import flash.utils.getTimer;

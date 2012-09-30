@@ -1,5 +1,7 @@
 package com.stirante.MazeMaster
 {
+	import com.stirante.MazeMaster.map.Map;
+	import com.stirante.MazeMaster.thread.Thread;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	
@@ -10,6 +12,8 @@ package com.stirante.MazeMaster
 	public class MazeMaster extends Sprite 
 	{	
 		private static var thread:Thread;
+		private static var instance:MazeMaster;
+		private static var map:Map;
 		public function MazeMaster():void 
 		{
 			if (stage) init();
@@ -19,6 +23,7 @@ package com.stirante.MazeMaster
 		private function init(e:Event = null):void 
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
+			instance = this;
 			thread = new Thread();
 			addEventListener(Event.ENTER_FRAME, enterFrame);
 		}
@@ -33,6 +38,15 @@ package com.stirante.MazeMaster
 			return thread;
 		}
 		
+		public static function getInstance():MazeMaster
+		{
+			return instance;
+		}
+		
+		public static function getMap():Map
+		{
+			return map;
+		}
 	}
 	
 }

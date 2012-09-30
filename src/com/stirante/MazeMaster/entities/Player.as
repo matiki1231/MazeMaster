@@ -1,5 +1,9 @@
-package com.stirante.MazeMaster
+package com.stirante.MazeMaster.entities
 {
+	import com.stirante.MazeMaster.map.Map;
+	import com.stirante.MazeMaster.MazeMaster;
+	import com.stirante.MazeMaster.utils.Control;
+	import com.stirante.MazeMaster.utils.Texture;
 	import flash.geom.*;
 	import flash.system.*;
 	/**
@@ -20,7 +24,6 @@ package com.stirante.MazeMaster
 		private var rightcorner:Point;
 		private var rightcorner1:Point;
 		private var world:Map;
-		//private var main:Main;
 		
 		public function Player() 
 		{
@@ -35,8 +38,7 @@ package com.stirante.MazeMaster
 			leftcorner1 = new Point();
 			rightcorner = new Point();
 			rightcorner1 = new Point();
-			world = Main.getWorld();
-			main = Main.getInstance();
+			world = MazeMaster.getMap();
 		}
 		override public function getMaxHealth():int 
 		{

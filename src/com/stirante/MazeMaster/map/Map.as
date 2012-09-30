@@ -1,5 +1,7 @@
-package com.stirante.MazeMaster 
+package com.stirante.MazeMaster.map 
 {
+	import com.stirante.MazeMaster.blocks.BlockList;
+	import com.stirante.MazeMaster.entities.Entity;
 	import flash.display.Sprite;
 	/**
 	 * Klasa zawierająca wszystkie informacje o mapie

@@ -1,5 +1,6 @@
-package  
+package com.stirante.MazeMaster.entities
 {
+	import com.stirante.MazeMaster.MazeMaster;
 	import flash.display.Bitmap;
 	import flash.display.Sprite;
 	/**
