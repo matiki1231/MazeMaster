@@ -3,6 +3,7 @@ package com.stirante.MazeMaster.entities
 	import com.stirante.MazeMaster.MazeMaster;
 	import flash.display.Bitmap;
 	import flash.display.Sprite;
+	import flash.errors.IllegalOperationError;
 	/**
 	 * ...
 	 * @author Piotr Brzozowski
@@ -19,8 +20,12 @@ package com.stirante.MazeMaster.entities
 		private var health:int;
 		private var speed:Number;
 		
-		public function Entity(texture:Bitmap, type:String, name:String, posX:int, posY:int) 
+		public function Entity(self:Entity ,texture:Bitmap, type:String, name:String, posX:int, posY:int) 
 		{
+			if (self != this) 
+			{
+				throw IllegalOperationError("Abstract type!");
+			}
 			this.posY = posY;
 			this.posX = posX;
 			id = ids;
@@ -30,6 +35,7 @@ package com.stirante.MazeMaster.entities
 		}
 		public function getType():String 
 		{
+			throw IllegalOperationError("Method getType must be overriden");
 			return "";
 		}
 		public function getName():String 
@@ -39,6 +45,7 @@ package com.stirante.MazeMaster.entities
 		
 		public function getMaxHealth():int
 		{
+			throw IllegalOperationError("Method getType must be overriden");
 			return 0;
 		}
 		
@@ -53,7 +60,7 @@ package com.stirante.MazeMaster.entities
 		
 		protected function killEntity():void
 		{
-			MazeMaster.getInstance().onEntityKilled(this);
+			//MazeMaster.getInstance().onEntityKilled(this);
 		}
 		
 		public function getHealth():int
@@ -103,7 +110,7 @@ package com.stirante.MazeMaster.entities
 		}
 		public function clone():Entity
 		{
-			return new Entity(texture, type, name, posX, posY, chunk);
+			return new Entity(this, texture, type, name, posX, posY);
 		}
 	}
 

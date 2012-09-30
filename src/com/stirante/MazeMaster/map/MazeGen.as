@@ -8,7 +8,12 @@ package com.stirante.MazeMaster.map
 	{
 		public static function generateMaze(sizeX:int, sizeY:int):Array
 		{
-			var result:Array = new Array();
+			var result:Array = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+								[1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1],
+								[1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1],
+								[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]];
+			
+			//TODO: maze generator
 			
 			return result;
 		}

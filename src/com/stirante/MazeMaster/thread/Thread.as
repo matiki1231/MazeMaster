@@ -1,5 +1,6 @@
 package com.stirante.MazeMaster.thread 
 {
+	import flash.events.Event;
 	/**
 	 * ...
 	 * @author Piotr Brzozowski
@@ -9,12 +10,12 @@ package com.stirante.MazeMaster.thread
 		private var tasks:Vector.<Task>;
 		public function Thread() 
 		{
-			
+			tasks = new Vector.<Task>();
 		}
 		/**
 		 * Metoda wykonywana 50 razy na sekundę
 		 */
-		public function run():void
+		public function run(e:Event):void
 		{
 			for (var i:int = 0; i < tasks.length; i++) 
 			{

@@ -6,13 +6,13 @@ package com.stirante.MazeMaster.entities
 	 * ...
 	 * @author Piotr Brzozowski
 	 */
-	public class EntityHostile extends EntityLiving 
+	public class EntityHostile extends Entity
 	{
 		private var pathfind:Pathfinding;
-		public function EntityHostile(texture1:Bitmap, name1:String) 
+		public function EntityHostile(self:EntityHostile, texture1:Bitmap, name1:String) 
 		{
-			super(texture1, EntityType.HOSTILE, name1, Math.round(14 * Math.random())+1, Math.round(14 * Math.random())+1);
-			
+			super(self, texture1, EntityType.ENEMY, name1, Math.round(14 * Math.random())+1, Math.round(14 * Math.random())+1);
+			pathfind = new Pathfinding(MazeMaster.getMap().getArray());
 		}
 		
 		public function findPath():Path

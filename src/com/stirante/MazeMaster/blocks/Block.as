@@ -1,6 +1,7 @@
 package com.stirante.MazeMaster.blocks
 {
 	import com.stirante.MazeMaster.entities.Entity;
+	import com.stirante.MazeMaster.utils.Texture;
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.display.DisplayObject;
@@ -39,26 +40,39 @@ package com.stirante.MazeMaster.blocks
 			addChild(texture);
 		}
 		/**
-		 * 
+		 * Zwraca Boolean czy blok jest walkable
 		 */
 		public function get walkable():Boolean
 		{
 			return _walkable;
 		}
-		
+		/**
+		 * Ustawia czy blok jest walkable
+		 */
 		public function set walkable(value:Boolean):void
 		{
 			_walkable = value;
 		}
+		/**
+		 * Zwraca nazwę bloku
+		 */
 		public function getName():String
 		{
 			return _name;
 		}
+		/**
+		 * Ustawia nazwę bloku
+		 * @param	value Nazwa bloku
+		 */
 		public function setName(value:String):void
 		{
 			_name = value;
 		}
-		
+		/**
+		 * Ustawia teksturę bloku na tą w pliku textures.png.
+		 * @param	x Pozycja x tekstury w pliku
+		 * @param	y Pozycja y tekstury w pliku
+		 */
 		public function setTexture(x:int, y:int):void
 		{
 			this.posY = y;
@@ -67,12 +81,22 @@ package com.stirante.MazeMaster.blocks
 			texture = Texture.getBlock(x, y);
 			addChild(texture);
 		}
+		/**
+		 * Zwraca kopię bloku
+		 */
 		public function clone():Block {
 			return new Block(id, posX, posY, walkable, name)
 		}
+		/**
+		 * Metoda wywoływana, kiedy jednostka przejdzie przez blok
+		 * @param	entity Jednostka na bloku
+		 */
 		public function onEntityWalked(entity:Entity):void {
 			
 		}
+		/**
+		 * Zwraca ID bloku
+		 */
 		public function getId():int 
 		{
 			return id;

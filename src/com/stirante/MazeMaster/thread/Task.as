@@ -26,7 +26,8 @@ package com.stirante.MazeMaster.thread
 		public function run():void
 		{
 			ticks++;
-			if (ticks == interval){
+			if (ticks == interval) {
+				ticks = 0;
 				method.call();
 				if (repeat != 0) 
 				{

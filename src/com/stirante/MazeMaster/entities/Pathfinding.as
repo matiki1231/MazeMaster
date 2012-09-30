@@ -1,5 +1,6 @@
 package com.stirante.MazeMaster.entities
 {
+	import com.stirante.MazeMaster.blocks.BlockList;
 	import flash.geom.Point;
 	import flash.utils.getTimer;
 	

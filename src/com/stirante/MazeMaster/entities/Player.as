@@ -10,7 +10,7 @@ package com.stirante.MazeMaster.entities
 	 * ...
 	 * @author Piotr Brzozowski
 	 */
-	public class Player extends EntityLiving
+	public class Player extends Entity
 	{
 		private var control:Control;
 		private var mana:Number;
@@ -27,8 +27,8 @@ package com.stirante.MazeMaster.entities
 		
 		public function Player() 
 		{
-			super(Texture.getBlock(9, 10), EntityType.PLAYER, "Player", 1, 1);
-			control = new Control(walk);
+			super(this, Texture.getBlock(9, 10), EntityType.PLAYER, "Player", 1, 1);
+			control = new Control(action);
 			addChild(control);
 			upcorner = new Point();
 			upcorner1 = new Point();
@@ -52,13 +52,13 @@ package com.stirante.MazeMaster.entities
 		{
 			super.killEntity();
 		}
-		public function walk(dir:String):void
+		public function action(dir:String):void
 		{
 			if (dir == "up") {
 				this.y -= getSpeed();
 				upcorner.x = this.x - width / 2;
 				upcorner.y = this.y - height / 2;
-				upcorner1.x = this.x + width / 2;
+				upcorner1.x = this.x + width / 2 - 1;
 				upcorner1.y = upcorner.y;
 				if (world.collideWith(upcorner) || world.collideWith(upcorner1)) {
 					this.y += getSpeed();
@@ -68,8 +68,8 @@ package com.stirante.MazeMaster.entities
 			if (dir == "down") {
 				this.y += getSpeed();
 				downcorner.x = this.x - width / 2;
-				downcorner.y = height / 2 + this.y;
-				downcorner1.x = this.x + width / 2;
+				downcorner.y = height / 2 + this.y - 1;
+				downcorner1.x = this.x + width / 2 - 1;
 				downcorner1.y = downcorner.y;
 				if (world.collideWith(downcorner) || world.collideWith(downcorner1)) {
 					this.y -= getSpeed();
@@ -81,7 +81,7 @@ package com.stirante.MazeMaster.entities
 				leftcorner.x = this.x - width / 2;
 				leftcorner.y = this.y - height / 2;
 				leftcorner1.x = leftcorner.x;
-				leftcorner1.y = this.y + height / 2;
+				leftcorner1.y = this.y + height / 2 - 1;
 				if (world.collideWith(leftcorner) || world.collideWith(leftcorner1)) {
 					this.x += getSpeed();
 					world.getBlockAt(leftcorner).onEntityWalked(this);
@@ -89,8 +89,8 @@ package com.stirante.MazeMaster.entities
 			}
 			if (dir == "right") {
 				this.x += getSpeed();
-				rightcorner.x = width / 2 + this.x;
-				rightcorner.y = height / 2 + this.y;
+				rightcorner.x = width / 2 + this.x - 1;
+				rightcorner.y = height / 2 + this.y - 1;
 				rightcorner1.x = rightcorner.x;
 				rightcorner1.y = this.y - height / 2;
 				if (world.collideWith(rightcorner) || world.collideWith(rightcorner1)) {
@@ -109,7 +109,7 @@ package com.stirante.MazeMaster.entities
 		}
 		override public function getSpeed():Number 
 		{
-			return 3;
+			return 1;
 		}
 	}
 

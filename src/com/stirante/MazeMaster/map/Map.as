@@ -1,5 +1,6 @@
 package com.stirante.MazeMaster.map 
 {
+	import com.stirante.MazeMaster.blocks.Block;
 	import com.stirante.MazeMaster.blocks.BlockList;
 	import com.stirante.MazeMaster.entities.Entity;
 	import flash.display.Sprite;
@@ -7,7 +8,7 @@ package com.stirante.MazeMaster.map
 	 * Klasa zawierająca wszystkie informacje o mapie
 	 * @author Piotr Brzozowski
 	 */
-	public class Map
+	public class Map extends Sprite
 	{
 		private var map1:Sprite;
 		private var map:Array
@@ -22,6 +23,9 @@ package com.stirante.MazeMaster.map
 		public function Map(map:Array) 
 		{
 			this.map = map;
+			entities = new Array();
+			blocks = new Array();
+			renderMap();
 		}
 		
 		/**
@@ -39,6 +43,7 @@ package com.stirante.MazeMaster.map
 			}
 			for (var i:int = 0; i < map.length; i++)
 			{
+				blocks[i] = new Array();
 				for (var j:int = 0; j < map[0].length; j++)
 				{
 					blocks[i][j] = BlockList.getBlockById(map[i][j]);
@@ -48,6 +53,7 @@ package com.stirante.MazeMaster.map
 				}
 			}
 			addChild(map1);
+			
 		}
 		
 		public function clear():void
@@ -64,11 +70,15 @@ package com.stirante.MazeMaster.map
 		public function spawnEntity(entity:Entity, posX:int = -1, posY:int = -1):void
 		{
 			if (posX == -1 && posY == -1) {
-				posX = Math.round(Math.random() * 14) + 1;
-				posY = Math.round(Math.random() * 14) + 1;
+				posX = Math.round(Math.random() * map[0].length) + 1;
+				posY = Math.round(Math.random() * map.length) + 1;
+			}
+			else {
+				//entity.x = posX;
+				//entity.y = posY;
 			}
 			entities.push(entity);
-			addChild(entities.push(entity));
+			addChild(entity);
 		}
 		/**
 		 * Usuwa jednostkę ze świata
@@ -91,7 +101,7 @@ package com.stirante.MazeMaster.map
 		 */
 		public function collideWith(corner:Object):Boolean 
 		{
-			if (!getBlockAt(corner.x, corner.y).walkable) {
+			if (!getBlockAt(corner).walkable) {
 				return true;
 			}
 			return false;
@@ -114,6 +124,10 @@ package com.stirante.MazeMaster.map
 		public function getMap():Sprite
 		{
 			return map1;
+		}
+		public function getArray():Array
+		{
+			return map;
 		}
 	}
 
