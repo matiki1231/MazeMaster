@@ -6,19 +6,12 @@ package com.stirante.MazeMaster
 	 */
 	public class MazeGen 
 	{
-		
-		public var result:Array;
-		
-		public function MazeGen() 
+		public static function generateMaze(sizeX:int, sizeY:int):Array
 		{
+			var result:Array = new Array();
 			
+			return result;
 		}
-		
-		public function getMap():Map
-		{
-			return new Map(result);
-		}
-		
 	}
 
 }
